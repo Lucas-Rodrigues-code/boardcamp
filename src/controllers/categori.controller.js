@@ -14,7 +14,6 @@ export async function PostCategories(req, res) {
      const  name  = res.locals.name; 
     try {
         const existCategory = await connection.query(`SELECT * FROM categories WHERE name=$1;`, [name])
-        console.log(existCategory.rows[0])
         if (existCategory.rows[0]) {
             res.status(409).send({ message: "Essa categoria já existe." });
             return;
