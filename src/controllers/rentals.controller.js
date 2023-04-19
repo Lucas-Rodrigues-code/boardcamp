@@ -1,5 +1,5 @@
 import { connection } from '../database/database.js';
-
+import rentalSchema from '../models/rentals.Schema.js';
 import dayjs from "dayjs";
 
 export async function getRentals(req, res) {
@@ -69,14 +69,14 @@ export async function getRentals(req, res) {
 
 export async function postRental(req, res) {
   const { customerId, gameId, daysRented } = res.locals.rental
-  const validation = res.locals.validation
+  const validation = res.locals.validation 
 
   try {
-    const customer = 
+    const customer = (
       await connection.query(`SELECT * FROM customers WHERE id = $1;`, [
         customerId,
       ])
-    .rows[0];
+    ).rows[0];
     const game = (
       await connection.query(`SELECT * FROM games WHERE id = $1;`, [gameId])
     ).rows[0];

@@ -27,6 +27,8 @@ export async function getGames(req, res) {
 export async function postGames(req, res){
     const { name, image, stockTotal, categoryId, pricePerDay } =/*  req.body */ res.locals.games 
 
+    
+
    
     try{
         await connection.query(

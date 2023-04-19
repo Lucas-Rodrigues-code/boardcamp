@@ -19,6 +19,7 @@ export async function validationGame(req, res, next) {
         );
         if (!category.rows[0]) {
             res.status(400).send({ message: "Categoria não existe" });
+            return
         }
 
         const exist = await connection.query(
